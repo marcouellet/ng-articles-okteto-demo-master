@@ -1,0 +1,21 @@
+.c-app {
+  &__title {
+    background-color: rgba(14, 0, 90, 0.589);
+    border-radius: 25px;
+    padding: 20px;
+    display: flex;
+
+    &__img {
+      max-width: 50px;
+      max-height: 50px;
+    }
+
+    &__text {
+      margin: 0 auto;
+      font-family: 'roboto';
+      font-size: 42px;
+      font-weight: 700;
+      color: white;
+    }
+  }
+}

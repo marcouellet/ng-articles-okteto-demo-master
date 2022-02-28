@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: articles-front-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: articles-front
+  template:
+    metadata:
+      labels:
+        app: articles-front
+    spec:
+      containers:
+      - name: front
+        image: marco2704/ng-articles-okteto-demo:beta
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Always
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: articles-front-service
+  annotations:
+    dev.okteto.com/auto-ingress: "true"
+spec:
+  type: ClusterIP
+  ports:
+  - name: "front"
+    port: 80
+  selector:
+    app: articles-front
